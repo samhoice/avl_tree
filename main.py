@@ -17,9 +17,10 @@ print(values)
 for i in values:
     tree.insert(i)
 
-print("pre order")
-tree.traverse(tree_print, order=Order.PRE)
-print("in order")
-tree.traverse(tree_print)
-print("post order")
-tree.traverse(tree_print, order=Order.POST)
+# print("pre order")
+# tree.traverse(tree_print, order=Order.PRE)
+# print("in order")
+tree.traverse(print)
+# print("post order")
+# tree.traverse(tree_print, order=Order.POST)
+

@@ -39,7 +39,7 @@ class AVLNode:
             pass
 
     def __str__(self):
-        return f"{self._value}"
+        return f"Node: {self._value} - left: {self._left}, right: {self._right}"
 
     def traverse(self, function, parent = None, order = Order.IN):
         """ recursively traverse the tree structure
@@ -54,6 +54,15 @@ class AVLNode:
             self._right.traverse(function, self, order)
         if order == Order.POST:
             function(self._value, parent)
+
+
+    def rotate_left(self):
+        pass
+
+    
+    def rotate_right(self):
+        pass
+
 
     def delete(self, value=None):
         """ remove a node from the tree
