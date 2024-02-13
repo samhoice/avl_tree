@@ -3,6 +3,6 @@ from fabric import task
 @task
 def test(c):
     """run the tests"""
-    cmd = "pytest ."
+    cmd = "PYTHONPATH=src pytest ."
 
     c.run(cmd)
