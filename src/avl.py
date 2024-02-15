@@ -24,6 +24,7 @@ class AVLNode:
         # the children here.
 
         self._left = None
+        self._balance = 0
         self._right = None
         self._value = value
 

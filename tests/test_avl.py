@@ -35,12 +35,13 @@ def test_greater_insert():
     tree = AVLNode()
 
     tree.insert(5)
+    tree.insert(7)
     tree.insert(6)
 
     result = []
     AVLNode.traverse(tree, lambda x: result.append(x))
 
-    check_result(result, [5, 6])
+    check_result(result, [5, 6, 7])
 
 
 def test_traversal_order():
