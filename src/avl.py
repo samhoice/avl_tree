@@ -68,7 +68,7 @@ class AVLNode:
         return f"Node: {self._value} - left: {self._left}, right: {self._right}"
 
     @classmethod
-    def traverse(cls, node, function, parent=None, order=Order.IN):
+    def traverse(cls, node, function, order=Order.IN):
         """recursively traverse the tree structure"""
 
         if not node:
@@ -76,23 +76,31 @@ class AVLNode:
 
         if node._value:
             if order == Order.IN:
-                cls.traverse(node._left, function)
+                cls.traverse(node._left, function, order=Order.IN)
                 function(node._value)
-                cls.traverse(node._right, function)
+                cls.traverse(node._right, function, order=Order.IN)
             elif order == Order.PRE:
                 function(node._value)
-                cls.traverse(node._left, function)
-                cls.traverse(node._right, function)
+                cls.traverse(node._left, function, order=Order.PRE)
+                cls.traverse(node._right, function, order=Order.PRE)
             else:
-                cls.traverse(node._left, function)
-                cls.traverse(node._right, function)
+                cls.traverse(node._left, function, order=Order.POST)
+                cls.traverse(node._right, function, order=Order.POST)
                 function(node._value)
 
-    def rotate_left(self):
-        pass
+    @staticmethod
+    def rotate_left(node):
+        child = node._right
+        node._right = child._left
+        child._left = node
+        return child
 
-    def rotate_right(self):
-        pass
+    @staticmethod
+    def rotate_right(node):
+        child = node._left
+        node._left = child._right
+        child._right = node
+        return child
 
     def delete(self, value=None):
         """remove a node from the tree
